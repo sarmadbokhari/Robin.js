@@ -1,0 +1,58 @@
+<html>
+<head>
+  <title>Javascript Observer Pattern</title>
+</head>
+<body>
+
+<script type="text/javascript">
+window.Robin = {};
+
+Robin.extend = function(destination, source){
+    for (var prop in source){
+      destination[prop] = source[prop]
+    }
+    return destination;
+  };
+
+Robin.Events = {
+  on: function(eventName, callback){
+    if (!this.events) {
+      this.events = {};
+    }
+    if (!this.events[eventName]) {
+      this.events[eventName] = [];
+    }
+    this.events[eventName].push(callback);
+  },
+
+  trigger: function(eventName){
+    for(var i = 0; i < this.events[eventName].length; i++){
+      this.events[eventName][i]();
+    }
+  }
+}
+
+// TESTS
+
+// var dog = {};
+
+// Robin.extend(dog,Robin.Events);
+
+// dog.on("bark", function(){
+//   console.log("The burglar ran away.");
+// });
+
+// dog.on("bark", function(){
+//   console.log("Ruff!");
+// });
+
+// dog.on("bark", function(){
+//   console.log("The cat got scared.");
+// });
+
+// dog.trigger("bark");
+
+</script>
+
+</body>
+</html>

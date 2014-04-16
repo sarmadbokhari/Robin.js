@@ -1,0 +1,38 @@
+<html>
+<head>
+  <title>Javascript Mixin Pattern</title>
+</head>
+<body>
+
+<script type="text/javascript">
+  window.Robin = {};
+
+  Robin.extend = function(destination, source1, source2){
+    for (var prop in source1){
+      destination[prop] = source1[prop]
+    }
+    for (var prop in source2){
+      destination[prop] = source2[prop]
+    }
+    return destination
+  };
+
+  var mammal = {
+    fur: true
+  };
+
+  var habitat = {
+    planet: "Earth"
+  };
+
+  var dog = {};
+
+  Robin.extend(dog, mammal, habitat)
+
+  console.log(dog.fur)
+  console.log(dog.planet)
+
+</script>
+
+</body>
+</html>
